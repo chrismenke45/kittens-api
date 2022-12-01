@@ -1,0 +1,1 @@
+This is the first API I am making with rails. It will have a server side rendered user interface as well as the ability to send responses via JSON.
