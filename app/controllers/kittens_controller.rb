@@ -4,6 +4,10 @@ class KittensController < ApplicationController
   # GET /kittens or /kittens.json
   def index
     @kittens = Kitten.all
+    respond_to do |format|
+      format.html
+      format.json { render :json => @kittens }
+    end
   end
 
   # GET /kittens/1 or /kittens/1.json
@@ -58,13 +62,14 @@ class KittensController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_kitten
-      @kitten = Kitten.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def kitten_params
-      params.require(:kitten).permit(:name, :age, :cuteness, :friendliness)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_kitten
+    @kitten = Kitten.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def kitten_params
+    params.require(:kitten).permit(:name, :age, :cuteness, :friendliness)
+  end
 end
